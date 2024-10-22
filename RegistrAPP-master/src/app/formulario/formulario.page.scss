@@ -1,0 +1,103 @@
+/* Estilos generales para centrar el formulario en la pantalla */
+ion-content {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  height: 100%; /* Asegura que ocupe toda la altura disponible */
+  padding: 16px; /* Añade un poco de relleno alrededor del contenido */
+  box-sizing: border-box; /* Incluye el padding en el cálculo del ancho/alto */
+}
+
+form {
+  width: 100%;
+  max-width: 400px; /* Limita el ancho máximo del formulario */
+  margin: 0 auto; /* Centra el formulario horizontalmente */
+}
+
+ion-item {
+  margin-bottom: 16px; /* Espacio entre los campos */
+  position: relative; /* Necesario para posicionar el borde inferior en los estados invalid/valid */
+  --highlight-color: transparent; /* Elimina el fondo del borde para todos los casos */
+  --color: inherit; /* El color del texto hereda del contenedor */
+  --highlight-color-focused: transparent; /* Elimina el color al enfocarse para todos los casos */
+}
+
+ion-label.floating {
+  transform: translateY(-1px); /* Ajuste menor del label para evitar desplazamiento excesivo */
+  font-size: 0.9rem; /* Tamaño ligeramente más grande para mayor legibilidad */
+  transition: all 0.3s ease-in-out; /* Animación suave para el movimiento del label */
+}
+
+ion-item.invalid ion-input {
+  --background: rgba(255, 0, 0, 0.05); /* Fondo rojo muy claro en el input */
+  --color: red; /* Color de texto rojo */
+  border: none; /* Elimina el borde del ion-item */
+}
+
+ion-item.invalid ion-input::after {
+  content: ''; 
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-bottom: 1px solid red; /* Borde rojo solo en la parte inferior del input */
+}
+
+ion-item.valid ion-input {
+  --background: rgba(0, 255, 0, 0.05); /* Fondo verde muy claro en el input */
+  --color: green; /* Color de texto verde */
+  border: none; /* Elimina el borde del ion-item */
+}
+
+ion-item.valid ion-input::after {
+  content: ''; 
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-bottom: 1px solid green; /* Borde verde solo en la parte inferior del input */
+}
+
+.error-message {
+  font-size: 0.75rem; /* Texto más pequeño */
+  margin-top: 8px; /* Espacio encima del mensaje de error */
+  color: #ff4d4f; /* Color de error */
+  display: block;
+  text-align: center; /* Centra el mensaje */
+}
+
+.success-message {
+  font-size: 0.75rem; /* Texto más pequeño */
+  margin-top: 8px; /* Espacio encima del mensaje de éxito */
+  color: #28a745; /* Color verde para el mensaje de éxito */
+  display: block;
+  text-align: center; /* Centra el mensaje */
+}
+
+ion-button {
+  margin-top: 16px; /* Espacio encima del botón */
+  --padding-start: 0; /* Ajusta el padding para que sea uniforme */
+  --padding-end: 0;
+  --height: 40px; /* Controla la altura del botón */
+  font-size: 0.9rem; /* Tamaño de texto más pequeño */
+}
+
+/* Asegura que el ion-footer está centrado */
+ion-footer {
+  text-align: center; /* Centra el texto del footer */
+}
+
+.centered-toolbar {
+  display: flex;
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra el contenido verticalmente */
+}
+
+.centered-button {
+  font-size: 0.9rem; /* Tamaño de texto más pequeño */
+  padding: 8px 16px; /* Ajusta el padding para reducir el tamaño del botón */
+  text-align: center; /* Asegura que el texto esté centrado */
+  margin: 0 auto; /* Centra el botón horizontalmente */
+}

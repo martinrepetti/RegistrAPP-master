@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button> <!-- Botón para volver a Home -->
+    </ion-buttons>
+    <ion-title>Recuperar Contraseña</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="passwordRecoveryForm" (ngSubmit)="onSubmit()">
+    <ion-item [ngClass]="{'invalid': isFieldInvalid('email'), 'valid': isFieldValid('email')}">
+      <ion-label 
+        position="floating" 
+        [class.floating]="emailFocused || passwordRecoveryForm.get('email')?.value"
+        >Correo
+      </ion-label>
+      <ion-input 
+        type="email" 
+        formControlName="email"
+        (ionFocus)="emailFocused = true" 
+        (ionBlur)="emailFocused = false"
+        aria-label="Correo electrónico"
+        aria-required="true">
+      </ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="isFieldInvalid('email')" class="error-message">
+      Ingresa un correo válido
+    </ion-text>
+    
+    <!-- Botón de envío -->
+    <ion-button expand="full" [disabled]="!passwordRecoveryForm.valid" type="submit">
+      Enviar correo de recuperación
+    </ion-button>
+
+    <ion-text *ngIf="emailSent" class="success-message">
+      Se ha enviado un correo de recuperación a la dirección proporcionada.
+    </ion-text>
+  </form>
+</ion-content>

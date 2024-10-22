@@ -1,0 +1,74 @@
+<!-- Encabezado de la página -->
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>RegistrAPP</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Contenido de la página -->
+<ion-content [fullscreen]="true" class="login-background">
+  <div id="container">
+    <!-- Contenedor del formulario -->
+    <div class="title-container">
+      <ion-text color="dark">
+        <h2>Inicio de Sesión</h2>
+      </ion-text>
+    </div>
+    <div class="login-container">
+      <!-- Formulario de inicio de sesión -->
+      <form [formGroup]="formularioLogin">
+        <!-- Campo de usuario -->
+        <ion-item [ngClass]="{'invalid': isFieldInvalid('usuario'), 'valid': isFieldValid('usuario')}">
+          <ion-label position="floating" [class.floating]="usuarioFocused || formularioLogin.get('usuario')?.value">
+            Usuario
+          </ion-label>
+          <ion-input 
+            type="text" 
+            formControlName="usuario" 
+            (ionFocus)="usuarioFocused = true" 
+            (ionBlur)="usuarioFocused = false">
+          </ion-input>
+        </ion-item>
+
+        <!-- Mensaje de error para el campo de usuario -->
+   <!-- Mensaje de error para el campo de usuario -->
+   <ion-text color="danger" *ngIf="isFieldInvalid('usuario')" class="error-message">
+    El correo debe ser válido y contener "&#64;"duocuc.cl o "&#64;"profesor.duoc.cl
+  </ion-text>
+
+        <!-- Campo de contraseña con botón para mostrar/ocultar -->
+        <ion-item [ngClass]="{'invalid': isFieldInvalid('contraseña'), 'valid': isFieldValid('contraseña')}">
+          <ion-label position="floating" [class.floating]="passwordFocused || formularioLogin.get('contraseña')?.value">
+            Contraseña
+          </ion-label>
+          <ion-input 
+            [type]="passwordType" 
+            formControlName="contraseña" 
+            (ionFocus)="passwordFocused = true" 
+            (ionBlur)="passwordFocused = false">
+          </ion-input>
+          <ion-button fill="clear" size="small" slot="end" (click)="togglePasswordVisibility()">
+            <ion-icon [name]="passwordIcon"></ion-icon>
+          </ion-button>
+        </ion-item>
+
+        <!-- Mensaje de error para el campo de contraseña -->
+        <ion-text color="danger" *ngIf="isFieldInvalid('contraseña')" class="error-message">
+          Ingresa una contraseña válida
+        </ion-text>
+        <ion-button shape="round" fill="clear" class="btn-recuperar" [routerLink]="['/formulario']">
+          Recuperar Contraseña
+        </ion-button>
+
+        <!-- Botón de inicio de sesión -->
+        <ion-button shape="round" expand="full" [disabled]="!formularioLogin.valid" (click)="irHome()">
+          Iniciar Sesión
+        </ion-button>
+      </form>
+    </div>
+  </div>
+</ion-content>
+
+<!-- Pie de página -->
+<ion-footer>
+</ion-footer>

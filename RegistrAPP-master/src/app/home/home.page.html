@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <h1>Home</h1>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content id="main-content" [fullscreen]="true">
+  <div id="container">
+    <h1>Bienvenido, {{ usuario }}</h1>
+
+    <!-- Mensaje de estado con animación de parpadeo -->
+    <h2 [ngClass]="{ 'class-started': isClassStarted, 'class-not-started': !isClassStarted }">
+      {{ isClassStarted ? 'Clase iniciada' : 'Clase no iniciada' }}
+    </h2>
+
+    <div class="toggle-container">
+      <ion-toggle aria-label="Green toggle" color="success" [(ngModel)]="isClassStarted"></ion-toggle>
+
+      <!-- Selector de fecha/hora, habilitado solo si la clase está iniciada -->
+      <ion-datetime locale="es-ES" displayFormat="DD/MM/YYYY" [disabled]="!isClassStarted"></ion-datetime>
+    </div>
+
+    <!-- Botón para generar QR, alineado a la izquierda -->
+    <div class="button-container">
+      <ion-button  (click)="generateQR()" class="generate-qr-button" [disabled]="!isClassStarted">
+        Generar QR
+      </ion-button>
+    </div>
+
+    <!-- Mostrar/Ocultar QR generado -->
+    <ion-button  *ngIf="qrCodeUrl && !isQrVisible" (click)="toggleQrVisibility(true)">
+      Ver Código QR
+    </ion-button>
+
+    <div *ngIf="qrCodeUrl && isQrVisible" class="qr-code-container">
+      <img [src]="qrCodeUrl" alt="Generated QR Code">
+      <ion-button (click)="toggleQrVisibility(false)">Cerrar QR</ion-button>
+    </div>
+
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button id="end-class-button" (click)="presentAlert()" expand="block">
+      Finalizar la Clase
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

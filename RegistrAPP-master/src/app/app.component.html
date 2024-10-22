@@ -1,0 +1,20 @@
+<ion-app>
+  <!-- Menú lateral -->
+  <ion-menu side="start" contentId="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <!-- Elementos del menú con enlaces de enrutamiento -->
+        <ion-item routerLink="/home" routerDirection="root">Home</ion-item>
+        <ion-item routerLink="/formulario" routerDirection="root">Recuperar Contraseña</ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <!-- Contenedor para las vistas de las rutas -->
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+</ion-app>

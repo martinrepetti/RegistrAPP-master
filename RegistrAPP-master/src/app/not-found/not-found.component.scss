@@ -1,0 +1,35 @@
+.image-container {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  height: calc(100vh - 70px); /* Ocupa el espacio restante de la vista */
+}
+
+img {
+  max-width: 80%; /* Ajusta el tamaño de la imagen al 80% del contenedor */
+  height: auto; /* Mantiene la proporción de la imagen */
+}
+
+.error-container {
+  position: absolute; /* Mantiene el botón en la parte inferior */
+  bottom: 20px; /* Distancia desde el fondo */
+  left: 50%; /* Centra horizontalmente */
+  transform: translateX(-50%); /* Ajusta para centrar el botón */
+  display: flex;
+  justify-content: center; /* Centra el botón horizontalmente */
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #007bff; /* Color azul */
+  color: white; /* Color del texto */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor a puntero */
+  font-size: 16px; /* Tamaño de fuente */
+  transition: background-color 0.3s; /* Transición suave para el color de fondo */
+}
+
+.btn:hover {
+  background-color: #0056b3; /* Color más oscuro al pasar el ratón */
+}

@@ -1,0 +1,113 @@
+/* Fondo de la pantalla de login */
+.login-background {
+  background-color: #A3D5FF; /* Azul pastel suave */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ocupa toda la altura de la pantalla */
+}
+
+/* Ajustes adicionales al contenedor */
+#container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 100px); /* Ocupa toda la pantalla menos 100px para moverlo hacia arriba */
+  text-align: center;
+  margin-top: -100px; /* Ajusta el margen superior para desplazar el contenido hacia arriba */
+
+  strong {
+    font-size: 20px;
+    line-height: 25px;
+  }
+
+  p {
+    font-size: 50px;
+    line-height: 22px;
+    color: #8c8c8c;
+    margin: 0;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+/* Ajustes de estilo del formulario */
+ion-label.floating {
+  transform: translateY(-1px); /* Ajusta según la distancia de flotación del label */
+  font-size: 0.8rem; /* Cambia el tamaño del texto cuando el label flote */
+}
+
+ion-item {
+  --highlight-color: transparent;
+  --color: inherit;
+  --highlight-color-focused: transparent;
+
+  &.invalid ion-input {
+    --background: rgba(255, 0, 0, 0.05); /* Fondo rojo claro en el input */
+    --color: red;
+    --highlight-color-focused: red; /* Borde rojo en el input */
+  }
+
+  &.valid ion-input {
+    --background: rgba(0, 255, 0, 0.05); /* Fondo verde claro en el input */
+    --color: green;
+    --highlight-color-focused: green; /* Borde verde en el input */
+  }
+
+  ion-input {
+    border: none; /* Remueve bordes en todos los estados */
+  }
+}
+
+/* Estilos de mensaje de error */
+.error-message {
+  font-size: 0.75rem; /* Texto más pequeño */
+  margin-top: 12px; /* Margen superior */
+  margin-left: 16px; /* Alinea el texto con el input */
+  color: #ff4d4f; /* Color de error */
+  display: block;
+}
+
+/* Estilos para centrar el formulario en la pantalla */
+.login-container {
+  background-color: #FFFFFF; /* Fondo blanco para el formulario */
+  padding: 24px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 500px; /* Limita el ancho máximo del formulario */
+}
+
+/* Estilos para el ion-footer */
+.centered-toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered-button {
+  font-size: 0.9rem;
+  padding: 8px 16px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ion-button {
+  --padding-start: 8px;
+  --padding-end: 8px;
+  --height: 40px; /* Controla la altura del botón */
+}
+
+ion-card {
+  border-radius: 15px; // Bordes redondeados
+  margin-bottom: 20px;
+}

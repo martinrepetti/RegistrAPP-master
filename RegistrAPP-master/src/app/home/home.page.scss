@@ -1,0 +1,91 @@
+/* Contenedor principal centrado verticalmente */
+#container {
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Contenedor para el toggle y otros elementos relacionados */
+.toggle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+
+/* Espacio superior para el ion-toggle */
+ion-toggle {
+  margin-top: 10px; /* Espacio entre el mensaje y el toggle */
+}
+
+/* Espacio superior para el ion-datetime */
+ion-datetime {
+  margin-top: 20px; /* Espacio entre el toggle y el datetime */
+}
+
+/* Estilos para la clase iniciada */
+.class-started {
+  color: green; /* Color verde para la clase iniciada */
+  animation: blink 1s infinite; /* Animación de parpadeo */
+}
+
+/* Estilos para la clase no iniciada */
+.class-not-started {
+  color: red; /* Color rojo para la clase no iniciada */
+  animation: blink 1s infinite; /* Animación de parpadeo */
+}
+
+/* Animación de parpadeo */
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Estilos para el botón de finalizar clase */
+#end-class-button {
+  margin-top: 20px;
+}
+
+/* Estilos para los botones de alerta */
+.alert-button-cancel {
+  color: red;
+}
+
+/* Estilos personalizados para el alert */
+.custom-alert {
+  --background: #fff;
+  --color: #000;
+}
+
+.alert-button-confirm {
+  color: green;
+}
+.button-container {
+  text-align: left; /* Alinear el botón a la izquierda */
+}
+
+.qr-code-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+img {
+  width: 150px;
+  height: 150px;
+}
+.generate-qr-button {
+  width: auto; /* Ajuste automático del ancho */
+  padding: 0 20px; /* Añade espacio alrededor del texto */
+  display: inline-block; /* Evita que ocupe todo el ancho */
+}
