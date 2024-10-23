@@ -1,5 +1,6 @@
-import { CanActivateFn, Router } from '@angular/router';
+import { CanActivate, CanActivateFn, Router } from '@angular/router';
 import { Injectable } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -19,6 +20,39 @@ export class AuthGuard {
     return isAuthenticated;
   }
 }
+
+@Injectable({
+  providedIn: 'root'
+})
+export class DocenteGuard implements CanActivate {
+  constructor(private authService: AuthService, private router: Router) {}
+
+  canActivate(): boolean {
+    if (this.authService.isDocente()) {
+      return true;
+    } else {
+      this.router.navigate(['/login']);
+      return false;
+    }
+  }
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AlumnoGuard implements CanActivate {
+  constructor(private authService: AuthService, private router: Router) {}
+
+  canActivate(): boolean {
+    if (this.authService.isAlumno()) {
+      return true;
+    } else {
+      this.router.navigate(['/login']);
+      return false;
+    }
+  }
+}
+
 
 // Implementación del guard utilizando CanActivateFn
 export const authGuard: CanActivateFn = (route, state) => {

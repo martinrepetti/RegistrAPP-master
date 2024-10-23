@@ -22,18 +22,18 @@
       <ion-toggle aria-label="Green toggle" color="success" [(ngModel)]="isClassStarted"></ion-toggle>
 
       <!-- Selector de fecha/hora, habilitado solo si la clase está iniciada -->
-      <ion-datetime locale="es-ES" displayFormat="DD/MM/YYYY" [disabled]="!isClassStarted"></ion-datetime>
+      <ion-datetime locale="es-ES" displayFormat="DD/MM/YYYY" [disabled]="!isClassStarted" class="small-datetime"></ion-datetime>
     </div>
 
-    <!-- Botón para generar QR, alineado a la izquierda -->
-    <div class="button-container">
-      <ion-button  (click)="generateQR()" class="generate-qr-button" [disabled]="!isClassStarted">
+    <!-- Botón para generar QR, centrado -->
+    <div class="button-container centered-button">
+      <ion-button (click)="generateQR()" class="generate-qr-button" [disabled]="!isClassStarted">
         Generar QR
       </ion-button>
     </div>
 
     <!-- Mostrar/Ocultar QR generado -->
-    <ion-button  *ngIf="qrCodeUrl && !isQrVisible" (click)="toggleQrVisibility(true)">
+    <ion-button *ngIf="qrCodeUrl && !isQrVisible" (click)="toggleQrVisibility(true)">
       Ver Código QR
     </ion-button>
 
@@ -41,7 +41,6 @@
       <img [src]="qrCodeUrl" alt="Generated QR Code">
       <ion-button (click)="toggleQrVisibility(false)">Cerrar QR</ion-button>
     </div>
-
   </div>
 </ion-content>
 

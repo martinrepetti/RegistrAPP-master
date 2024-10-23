@@ -1,11 +1,8 @@
 /* Contenedor principal centrado verticalmente */
 #container {
   text-align: center;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  position: relative;
+  padding: 20px; /* Añade padding para evitar que el contenido toque los bordes */
 }
 
 /* Contenedor para el toggle y otros elementos relacionados */
@@ -25,6 +22,8 @@ ion-toggle {
 /* Espacio superior para el ion-datetime */
 ion-datetime {
   margin-top: 20px; /* Espacio entre el toggle y el datetime */
+  --width: 200px; /* Ajusta el ancho del calendario */
+  --height: 50px; /* Ajusta la altura del calendario */
 }
 
 /* Estilos para la clase iniciada */
@@ -71,8 +70,12 @@ ion-datetime {
 .alert-button-confirm {
   color: green;
 }
+
+/* Contenedor para el botón de generar QR */
 .button-container {
-  text-align: left; /* Alinear el botón a la izquierda */
+  display: flex;
+  justify-content: center; /* Centra el botón */
+  margin-top: 20px; /* Añade espacio superior */
 }
 
 .qr-code-container {
@@ -84,8 +87,14 @@ img {
   width: 150px;
   height: 150px;
 }
+
 .generate-qr-button {
   width: auto; /* Ajuste automático del ancho */
   padding: 0 20px; /* Añade espacio alrededor del texto */
   display: inline-block; /* Evita que ocupe todo el ancho */
+}
+
+/* Habilita el scroll en el contenido */
+ion-content {
+  --overflow: scroll;
 }
