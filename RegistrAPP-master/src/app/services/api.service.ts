@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiService {
-  private apiUrl = 'https://api.qrserver.com/v1/create-qr-code/';
+  private apiUrl = 'https://api.qrserver.com/v1/create-qr-code/?color=000000&bgcolor=FFFFFF&data=https%3A%2F%2F2wf2dm6v-8100.brs.devtunnels.ms%2F&qzone=1&margin=0&size=400x400&ecc=M';
 
   constructor(private http: HttpClient) {}
 

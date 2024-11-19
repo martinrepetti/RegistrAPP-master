@@ -73,11 +73,12 @@ describe('HomePage', () => {
     const navigateSpy = spyOn(router, 'navigate'); // Espía la función de navegación del Router
 
     // Simula que el formulario es inválido (campo de contraseña vacío)
-    component.formularioLogin.controls['usuario'].setValue('testuser'); // Usuario válido
-    component.formularioLogin.controls['contraseña'].setValue(''); // Contraseña vacía
+    component.formularioLogin.controls['usuario'].getValue(''); // Usuario válido
+    component.formularioLogin.controls['contraseña'].getValue(''); // Contraseña vacía
 
     // Llama al método que desencadena la navegación, pero no debería navegar ya que el formulario es inválido
     component.irHome();
+
 
     // Verifica que la función de navegación no haya sido llamada
     expect(navigateSpy).not.toHaveBeenCalled();

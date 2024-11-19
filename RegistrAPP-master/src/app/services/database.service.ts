@@ -14,7 +14,7 @@ export class DatabaseService {
   private async initializeDatabase() {
     try {
       this.dbInstance = await this.sqlite.create({
-        name: 'users.db',
+        name: 'DB.db',
         location: 'default'
       });
       await this.dbInstance.executeSql(`
