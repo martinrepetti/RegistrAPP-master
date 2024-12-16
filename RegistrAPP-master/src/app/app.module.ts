@@ -4,7 +4,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { provideHttpClient } from '@angular/common/http';
 import { SQLite } from '@ionic-native/sqlite/ngx';
-
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component'; // Asegúrate de importar el componente 404
@@ -24,7 +24,7 @@ import { NotFoundComponent } from './not-found/not-found.component'; // Asegúra
   providers: [
     provideHttpClient(),
       SQLite,
-      { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+      { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },BarcodeScanner
   ],
   bootstrap: [AppComponent]
 })

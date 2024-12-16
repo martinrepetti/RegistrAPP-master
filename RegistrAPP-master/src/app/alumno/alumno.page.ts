@@ -1,17 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-// import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 @Component({
   selector: 'app-alumno',
   templateUrl: './alumno.page.html',
   styleUrls: ['./alumno.page.scss'],
 })
-export class AlumnoPage implements OnInit {
+export class AlumnoPage{
 
-  constructor() { }
+  scannedData: string | null = null;
 
-  ngOnInit() {
+  constructor(private barcodeScanner: BarcodeScanner) {}
+
+  scanQRCode() {
+    this.barcodeScanner.scan().then(
+      (barcodeData) => {
+        console.log('Barcode data', barcodeData);
+        this.scannedData = barcodeData.text; // Guardar el texto del QR
+      },
+      (err) => {
+        console.error('Error', err);
+      }
+    );
   }
+}
   // async openCamera() {
   //   try {
   //     const image = await Camera.getPhoto({
@@ -22,8 +34,8 @@ export class AlumnoPage implements OnInit {
   //     });
   //     this.capturedImage = image.webPath;
   //     console.log('Imagen capturada:', this.capturedImage);
+
   //   } catch (error) {
   //     console.error('Error al abrir la cámara:', error);
   //   }
   // }
-}
