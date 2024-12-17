@@ -8,6 +8,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component'; // Asegúrate de importar el componente 404
+import { DatabaseService } from './services/database.service';
 
 @NgModule({
 
@@ -24,6 +25,7 @@ import { NotFoundComponent } from './not-found/not-found.component'; // Asegúra
   providers: [
     provideHttpClient(),
       SQLite,
+      DatabaseService,
       { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },BarcodeScanner
   ],
   bootstrap: [AppComponent]

@@ -11,6 +11,7 @@ export class DatabaseService {
     this.initializeDatabase();
   }
 
+  // Inicializa la base de datos
   private async initializeDatabase() {
     try {
       this.dbInstance = await this.sqlite.create({
@@ -21,8 +22,7 @@ export class DatabaseService {
         CREATE TABLE IF NOT EXISTS users (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           email TEXT,
-          password TEXT,
-          role TEXT
+          password TEXT
         );
       `, []);
     } catch (error) {
@@ -30,21 +30,22 @@ export class DatabaseService {
     }
   }
 
+  // Método para agregar un usuario
   public async addUser(email: string, password: string) {
-    const role = email.includes('@profesor.duoc.cl') ? 'docente' : 'alumno';
     try {
       await this.dbInstance!.executeSql(`
-        INSERT INTO users (email, password, role) VALUES (?, ?, ?)
-      `, [email, password, role]);
+        INSERT INTO users (email, password) VALUES (?, ?)
+      `, [email, password]);
     } catch (error) {
       console.error('Error adding user', error);
     }
   }
 
+  // Método para obtener un usuario por correo y contraseña
   public async getUser(email: string, password: string) {
     try {
       const res = await this.dbInstance!.executeSql(`
-        SELECT * FROM users WHERE email = ? AND password = ?
+        SELECT * FROM users WHERE LOWER(email) = LOWER(?) AND password = ?
       `, [email, password]);
       if (res.rows.length > 0) {
         return res.rows.item(0);
@@ -55,5 +56,4 @@ export class DatabaseService {
       return null;
     }
   }
-  
 }

@@ -33,13 +33,12 @@
     </div>
 
     <!-- Mostrar/Ocultar QR generado -->
-    <ion-button *ngIf="qrCodeUrl && !isQrVisible" (click)="toggleQrVisibility(true)">
+    <ion-button *ngIf="qrCodeUrl && !isQrVisible" class="ver-button" (click)="toggleQrVisibility(true)">
       Ver Código QR
     </ion-button>
 
     <div *ngIf="qrCodeUrl && isQrVisible" class="qr-code-container">
       <img [src]="qrCodeUrl" alt="Generated QR Code">
-      <ion-button (click)="toggleQrVisibility(false)">Cerrar QR</ion-button>
     </div>
   </div>
 </ion-content>

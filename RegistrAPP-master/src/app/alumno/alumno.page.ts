@@ -1,41 +1,49 @@
 import { Component, OnInit } from '@angular/core';
-import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { LoadingController, ModalController, Platform } from '@ionic/angular';
+import { BarcodeScanningModalComponent } from './barcode-scanning-modal.component';
+import { LensFacing, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 
 @Component({
   selector: 'app-alumno',
   templateUrl: './alumno.page.html',
   styleUrls: ['./alumno.page.scss'],
 })
-export class AlumnoPage{
+export class AlumnoPage implements OnInit{
 
-  scannedData: string | null = null;
+    segment='scan';
+    scanResult=""
+ 
+  constructor( 
+    private modalController: ModalController,
+    private platform: Platform,
+    private loadingController: LoadingController,
+  ) {}
 
-  constructor(private barcodeScanner: BarcodeScanner) {}
-
-  scanQRCode() {
-    this.barcodeScanner.scan().then(
-      (barcodeData) => {
-        console.log('Barcode data', barcodeData);
-        this.scannedData = barcodeData.text; // Guardar el texto del QR
-      },
-      (err) => {
-        console.error('Error', err);
-      }
-    );
-  }
+ngOnInit(): void {
+    if(this.platform.is('capacitor')){
+      BarcodeScanner.isSupported().then();
+      BarcodeScanner.checkPermissions().then();
+      BarcodeScanner.removeAllListeners();
+    }
 }
-  // async openCamera() {
-  //   try {
-  //     const image = await Camera.getPhoto({
-  //       quality: 90,
-  //       allowEditing: false,
-  //       resultType: CameraResultType.Uri,
-  //       source: CameraSource.Camera,
-  //     });
-  //     this.capturedImage = image.webPath;
-  //     console.log('Imagen capturada:', this.capturedImage);
 
-  //   } catch (error) {
-  //     console.error('Error al abrir la cámara:', error);
-  //   }
-  // }
+async startScan() {
+  const modal = await this.modalController.create({
+  component: BarcodeScanningModalComponent,
+  cssClass:'barcode-scanning-modal',
+  showBackdrop: false,
+  componentProps: { 
+    formats:[],
+    LensFacing:LensFacing.Back
+  }
+  });
+
+  await modal.present();
+  const{data} = await modal.onWillDismiss();
+
+  if (data){
+    this.scanResult = data?.barcode?.displayValue
+  }
+
+}
+}
