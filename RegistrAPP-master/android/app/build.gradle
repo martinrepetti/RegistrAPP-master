@@ -16,10 +16,22 @@ android {
             ignoreAssetsPattern '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
+        // Configuración para la firma
+    signingConfigs {
+        release {
+            storeFile file('../my-release-key.keystore') // Ruta al archivo .keystore
+            storePassword 'Fr2ks5e8n2.'          // Contraseña del archivo .keystore
+            keyAlias 'my-key-alias'                      // Alias de la clave
+            keyPassword 'Fr2ks5e8n2.'              // Contraseña de la clave
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+                        // Vincula la configuración de firma al tipo de compilación "release"
+            signingConfig signingConfigs.release
         }
     }
 }

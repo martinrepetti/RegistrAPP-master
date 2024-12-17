@@ -1,26 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <title>Ionic App</title>
-
-  <base href="/" />
-
-  <meta name="color-scheme" content="light dark" />
-  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="format-detection" content="telephone=no" />
-  <meta name="msapplication-tap-highlight" content="no" />
-
-  <link rel="icon" type="image/png" href="assets/icon/favicon.png" />
-
-  <!-- add to homescreen for ios -->
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Descargar RegistrAPP</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      background-color: #f4f4f4;
+    }
+    .container {
+      width: 100%;
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+    .cta-button {
+      display: inline-block;
+      padding: 15px 30px;
+      background-color: #007BFF;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 24px;
+      }
+      .cta-button {
+        padding: 12px 25px;
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
-
 <body>
-  <app-root></app-root>
-</body>
+  <div class="container">
+    <h1>¡Bienvenido a RegistrAPP!</h1>
+    <p>Descarga nuestra aplicación móvil y regístrate rápidamente.</p>
+    <p>Para usuarios de Android, haga clic en el siguiente enlace:</p>
+    <a class="cta-button" href="https://github.com/usuario/repositorio/raw/main/registrapp-release.apk" download="RegistrAPP.apk">Descargar APK</a>
+  </div>
 
+  <script>
+    if (window.innerWidth < 768) {
+      document.body.style.backgroundColor = "#e0f7fa"; // Cambia el fondo para móviles
+    }
+  </script>
+</body>
 </html>
